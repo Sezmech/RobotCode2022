@@ -14,12 +14,14 @@ package frc.robot;
  */
 public final class Constants {
     ///Motor CAN IDs
+        //Joystick Ports
+        public static final int JOYSTICK_D = 0; //Driver Joystick
+        public static final int JOYSTICK_C = 1; //Controller Joystick
+
         //Drive Motor IDs
         public static final int M_FRONTRIGHT = 1;
         public static final int M_FRONTLEFT = 2;
         public static final int M_BACKRIGHT = 3;
         public static final int M_BACKLEFT = 4;
-
-        //SparkMax ID
     
 }
