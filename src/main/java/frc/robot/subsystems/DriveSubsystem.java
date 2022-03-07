@@ -27,8 +27,7 @@ public class DriveSubsystem extends SubsystemBase {
   
 
   /** Creates a new ExampleSubsystem. */
-  public DriveSubsystem() {
-  }
+  public DriveSubsystem() {}
 
   /* Method that will be called with joystick inputs. 
      > speed needs to be assigned joysticks Z Axis
