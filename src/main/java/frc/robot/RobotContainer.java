@@ -26,7 +26,7 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   // Joystick object initialization
-  public static Joystick joystick = new Joystick(0);
+  public static Joystick joystick = new Joystick(Constants.JOYSTICK_D);
 
   // Subsystem Definitions
   private final DriveSubsystem m_drive = new DriveSubsystem();
