@@ -21,11 +21,16 @@ public class LiftSubsystem extends SubsystemBase {
   }
   
  public void moveUp() {
-   if(!liftUpperSwitch.get()) {
     liftMotor.set(0.5);
-   }
-   else {
-     liftMotor.stopMotor();
-   }
  }
+
+ public void motorStop() {
+   liftMotor.stopMotor();
+ }
+
+ public boolean upperSwitchState() {
+   return !liftUpperSwitch.get();
+ }
+
+
 } 
