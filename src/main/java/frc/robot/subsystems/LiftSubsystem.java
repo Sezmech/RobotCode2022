@@ -15,28 +15,29 @@ public class LiftSubsystem extends SubsystemBase {
   private static CANSparkMax liftMotor;
 
   public LiftSubsystem() {
-    liftUpperSwitch = new DigitalInput(0);
-    liftLowerSwitch = new DigitalInput(1);
+    liftUpperSwitch = new DigitalInput(Constants.S_UPPER_LIFT);
+    liftLowerSwitch = new DigitalInput(Constants.S_LOWER_LIFT);
     liftMotor = new CANSparkMax(Constants.M_LIFT, CANSparkMaxLowLevel.MotorType.kBrushless);
   }
   
- public void moveUp() {
-    liftMotor.set(0.5);
- }
+  public void moveUp() {
+      liftMotor.set(0.5);
+  }
 
- public void motorStop() {
-   liftMotor.stopMotor();
- }
+  public void moveDown() {
+    liftMotor.set(-0.5);
+    }
 
- public boolean upperSwitchState() {
-   return !liftUpperSwitch.get();
- }
+  public void motorStop() {
+    liftMotor.stopMotor();
+  }
 
- public void moveDown() {
-  liftMotor.set(0.5);
-}
-public boolean lowerSwitchState() {
-  return !liftLowerSwitch.get();
-}
+  public boolean upperSwitchState() {
+    return !liftUpperSwitch.get();
+  }
+
+  public boolean lowerSwitchState() {
+    return !liftLowerSwitch.get();
+  }
 
 } 
