@@ -32,5 +32,11 @@ public class LiftSubsystem extends SubsystemBase {
    return !liftUpperSwitch.get();
  }
 
+ public void moveDown() {
+  liftMotor.set(0.5);
+}
+public boolean lowerSwitchState() {
+  return !liftLowerSwitch.get();
+}
 
 } 
