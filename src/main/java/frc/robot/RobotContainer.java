@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.SlideCommandGroup;
+import frc.robot.commands.SlideCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SlideSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -44,7 +44,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
    new JoystickButton(joystick, 1)
-    .whenPressed(new SlideCommandGroup(m_slide));
+    .whenPressed(new SlideCommand(m_slide));
   
   }
 

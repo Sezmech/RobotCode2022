@@ -27,11 +27,11 @@ public class SlideSubsystem extends SubsystemBase {
   }
 
   public void moveBack() {
-    slideMotor.set(0.1);
+    slideMotor.set(0.2);
   }
 
   public void moveForward() {
-    slideMotor.set(-0.1);
+    slideMotor.set(-0.2);
   }
 
   public void motorStop() {

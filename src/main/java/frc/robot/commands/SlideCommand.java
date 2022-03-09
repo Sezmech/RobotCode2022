@@ -7,10 +7,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.SlideSubsystem;
 
-public class SlideCommandBack extends CommandBase {
+public class SlideCommand extends CommandBase {
   private final SlideSubsystem m_subsystem;
-  /** Creates a new SlideCommandRight. */
-  public SlideCommandBack(SlideSubsystem subsystem) {
+  /** Creates a new SlideCommandLeft. */
+  public SlideCommand(SlideSubsystem subsystem) {
     m_subsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_subsystem);
@@ -19,6 +19,12 @@ public class SlideCommandBack extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    // Makes the motor move forward until it hits the right limit switch
+    while(!m_subsystem.getRightSwitch()) {
+      m_subsystem.moveForward();
+    }
+
+    //After the limit switch is hit te direction is reversed and keeps going until the left switch is hit.
     m_subsystem.moveBack();
   }
 
@@ -35,6 +41,6 @@ public class SlideCommandBack extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_subsystem.getRightSwitch();
+    return m_subsystem.getLeftSwitch();
   }
 }
