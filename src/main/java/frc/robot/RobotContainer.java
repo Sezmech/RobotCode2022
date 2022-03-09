@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.LiftCommandGroup;
+import frc.robot.commands.SlideCommandGroup;
 import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.LiftSubsystem;
+import frc.robot.subsystems.SlideSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -28,7 +28,7 @@ public class RobotContainer {
 
   // Joystick object initialization
   public static Joystick joystick = new Joystick(0);
-  private final LiftSubsystem m_lift = new LiftSubsystem();
+  private final SlideSubsystem m_slide = new SlideSubsystem();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -44,7 +44,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
    new JoystickButton(joystick, 1)
-    .whenPressed(new LiftCommandGroup(m_lift));
+    .whenPressed(new SlideCommandGroup(m_slide));
   
   }
 
