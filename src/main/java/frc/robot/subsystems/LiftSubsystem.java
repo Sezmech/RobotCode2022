@@ -21,11 +21,11 @@ public class LiftSubsystem extends SubsystemBase {
   }
   
   public void moveUp() {
-      liftMotor.set(0.5);
+      liftMotor.set(0.2);
   }
 
   public void moveDown() {
-    liftMotor.set(-0.5);
+    liftMotor.set(-0.2);
     }
 
   public void motorStop() {
