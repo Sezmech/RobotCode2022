@@ -23,5 +23,14 @@ public final class Constants {
         public static final int M_FRONTLEFT = 2;
         public static final int M_BACKRIGHT = 3;
         public static final int M_BACKLEFT = 4;
+  
+        //SparkMax ID
+        public static final int M_LIFT = 5;
+    
+    ///Sensor Ports
+        //Limit Switches
+        public static final int S_UPPER_LIFT = 0;
+        public static final int S_LOWER_LIFT = 2;
+
     
 }
