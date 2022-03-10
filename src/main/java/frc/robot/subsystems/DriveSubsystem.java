@@ -23,21 +23,20 @@ public class DriveSubsystem extends SubsystemBase {
   static MotorControllerGroup motorGroupLeft = new MotorControllerGroup(motorFrontLeft, motorBackLeft);
 
   //Combine the two motor controller groups to make a chasiss object. This is the object for driving.
-  static DifferentialDrive chassis = new DifferentialDrive(motorGroupRight, motorGroupLeft);
+  private DifferentialDrive chassis = new DifferentialDrive(motorGroupRight, motorGroupLeft);
   
 
   /** Creates a new ExampleSubsystem. */
   public DriveSubsystem() {
+    chassis.setSafetyEnabled(false);
   }
 
   /* Method that will be called with joystick inputs. 
-     > speed needs to be assigned joysticks Z Axis
-     > rotation needs to be assigned to joysticks Y Axis
-    So while it makes more sense for the speed to be assigned to Y and rotation assigned to Z unfotunately
-    the code doesn't work and tries to turn when holding forward on the Y axis. So don't change anything here
+     > speed is assigned to the Y axis
+     > rotation is assigned to the Z axis
   */
-  public static void dirve(double speed, double rotation) {
-    chassis.arcadeDrive(speed, rotation);
+  public void drive(double speed, double rotation) {
+    chassis.arcadeDrive(rotation, speed);
   }
 
   @Override

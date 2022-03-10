@@ -7,8 +7,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.LiftCommand;
+import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -27,11 +29,16 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   // Joystick object initialization
-  public static Joystick joystick = new Joystick(0);
+  public static Joystick joystick = new Joystick(Constants.JOYSTICK_D);
+
+  // Subsystem Definitions
   private final LiftSubsystem m_lift = new LiftSubsystem();
+  private final DriveSubsystem m_drive = new DriveSubsystem();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    //Makes it so DriveCommand is always called unless DriveSubsystem is used elsewhere which will not happen
+     m_drive.setDefaultCommand(new DriveCommand(m_drive));
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -42,7 +49,9 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
+
   private void configureButtonBindings() {
+
    new JoystickButton(joystick, 1)
     .whenPressed(new LiftCommand(m_lift));
   
