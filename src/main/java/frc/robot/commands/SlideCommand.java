@@ -21,11 +21,11 @@ public class SlideCommand extends CommandBase {
   public void initialize() {
     // Makes the motor move forward until it hits the right limit switch
     while(!m_subsystem.getRightSwitch()) {
-      m_subsystem.moveForward();
+      m_subsystem.move(0.3);
     }
 
     //After the limit switch is hit te direction is reversed and keeps going until the left switch is hit.
-    m_subsystem.moveBack();
+    m_subsystem.move(-0.3);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -35,7 +35,7 @@ public class SlideCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_subsystem.motorStop();
+    m_subsystem.move(0);
   }
 
   // Returns true when the command should end.

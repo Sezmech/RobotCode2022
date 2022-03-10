@@ -11,7 +11,6 @@ import com.revrobotics.CANSparkMaxLowLevel;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -50,16 +49,8 @@ public class SlideSubsystem extends SubsystemBase {
     }
   }
 
-  public void moveBack() {
-    slideMotor.set(0.2);
-  }
-
-  public void moveForward() {
-    slideMotor.set(-0.2);
-  }
-
-  public void motorStop() {
-    slideMotor.stopMotor();
+  public void move(double speed) {
+    slideMotor.set(speed);
   }
 
   public boolean getRightSwitch() {
