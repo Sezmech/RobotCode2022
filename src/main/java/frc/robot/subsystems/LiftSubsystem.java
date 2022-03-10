@@ -20,16 +20,8 @@ public class LiftSubsystem extends SubsystemBase {
     liftMotor = new CANSparkMax(Constants.M_LIFT, CANSparkMaxLowLevel.MotorType.kBrushless);
   }
   
-  public void moveUp() {
-      liftMotor.set(0.2);
-  }
-
-  public void moveDown() {
-    liftMotor.set(-0.2);
-    }
-
-  public void motorStop() {
-    liftMotor.stopMotor();
+  public static void move(double speed) {
+      liftMotor.set(speed);
   }
 
   public boolean upperSwitchState() {
