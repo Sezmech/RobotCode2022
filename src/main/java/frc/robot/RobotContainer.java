@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.HookCommand;
+import frc.robot.commands.HookStop;
 import frc.robot.commands.SlideCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SlideSubsystem;
@@ -34,6 +36,8 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    //m_slide.setDefaultCommand(new HookStop(m_slide));
   }
 
   /**
@@ -42,11 +46,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {
-   new JoystickButton(joystick, 1)
-    .whenPressed(new SlideCommand(m_slide));
-  
-  }
+  private void configureButtonBindings() {}
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
