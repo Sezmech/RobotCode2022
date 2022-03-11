@@ -24,15 +24,20 @@ public final class Constants {
         public static final int M_BACKRIGHT = 3;
         public static final int M_BACKLEFT = 4;
 
-        //Lide Motor ID
+        //Side Motor ID
         public static final int M_SLIDE = 5;
 
         //Lift Motor IDs
-            public static final int M_LIFT1 = 6;
-            public static final int M_LIFT2 = 8;
+        public static final int M_LIFT1 = 6;
+        public static final int M_LIFT2 = 8;
 
         //Hook Motor ID
         public static final int M_HOOK = 7;
+
+        //Shooter Motor IDs
+        public static final int M_SHOOTER = 9;
+        public static final int M_FEED = 10;
+        public static final int M_INTAKE = 11;
 
         
     ///Sensor Ports
