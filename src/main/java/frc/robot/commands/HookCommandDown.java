@@ -5,17 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.SlideSubsystem;
 
-public class DriveCommand extends CommandBase {
-  private final DriveSubsystem m_subsystem;
-
-  /** Creates a new DriveCommand. */
-  public DriveCommand(DriveSubsystem subsystem) {
-    m_subsystem = subsystem;
+public class HookCommandDown extends CommandBase {
+  private final SlideSubsystem m_slide;
+  /** Creates a new HookCommandDown. */
+  public HookCommandDown(SlideSubsystem subsystem) {
+    m_slide = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_subsystem);
+    addRequirements(m_slide);
   }
 
   // Called when the command is initially scheduled.
@@ -25,13 +23,13 @@ public class DriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //Default drive command used in driving
-    m_subsystem.drive(RobotContainer.joystick.getY(), RobotContainer.joystick.getZ());
+    m_slide.hookMove(-0.7);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_slide.hookMove(0);
   }
 
   // Returns true when the command should end.

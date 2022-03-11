@@ -36,7 +36,7 @@ public class DriveSubsystem extends SubsystemBase {
      > rotation is assigned to the Z axis
   */
   public void drive(double speed, double rotation) {
-    chassis.arcadeDrive(rotation, speed);
+    chassis.arcadeDrive(rotation * 0.6, speed * 0.5);
   }
 
   @Override

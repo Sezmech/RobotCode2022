@@ -28,8 +28,8 @@ public final class Constants {
         public static final int M_HOOK = 7;
   
         //SparkMax ID
-        public static final int M_LIFT = 5;
-        public static final int M_SLIDE = 6;
+        public static final int M_LIFT = 6;
+        public static final int M_SLIDE = 5;
     
     ///Sensor Ports
         //Limit Switches
