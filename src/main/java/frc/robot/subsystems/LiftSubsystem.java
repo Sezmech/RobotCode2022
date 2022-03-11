@@ -4,23 +4,26 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.Constants;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class LiftSubsystem extends SubsystemBase {
   
-  private static CANSparkMax liftMotor;
+  private static WPI_VictorSPX liftMotor1;
+  private static WPI_VictorSPX liftMotor2;
 
   /** Creates a new LiftSubsystem. */
   public LiftSubsystem() {
-    liftMotor = new CANSparkMax(Constants.M_LIFT, CANSparkMaxLowLevel.MotorType.kBrushless);
+    liftMotor1 = new WPI_VictorSPX(Constants.M_LIFT1);
+    liftMotor2 = new WPI_VictorSPX(Constants.M_LIFT2);
   }
 
   public void move(double speed) {
-    liftMotor.set(speed);
+    liftMotor1.set(ControlMode.PercentOutput, speed);
+    liftMotor2.set(ControlMode.PercentOutput, speed);
   }
 
   @Override

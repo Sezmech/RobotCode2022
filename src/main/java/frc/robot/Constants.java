@@ -24,13 +24,17 @@ public final class Constants {
         public static final int M_BACKRIGHT = 3;
         public static final int M_BACKLEFT = 4;
 
+        //Lide Motor ID
+        public static final int M_SLIDE = 5;
+
+        //Lift Motor IDs
+            public static final int M_LIFT1 = 6;
+            public static final int M_LIFT2 = 8;
+
         //Hook Motor ID
         public static final int M_HOOK = 7;
-  
-        //SparkMax ID
-        public static final int M_LIFT = 6;
-        public static final int M_SLIDE = 5;
-    
+
+        
     ///Sensor Ports
         //Limit Switches
         public static final int S_UPPER_LIFT = 0;
