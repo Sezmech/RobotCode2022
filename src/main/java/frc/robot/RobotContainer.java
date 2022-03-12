@@ -72,7 +72,6 @@ public class RobotContainer {
     new JoystickButton(joystick, 2)
       .whileHeld(new SlideCOmmandBackwards(m_slide));
     
-  
     new JoystickButton(joystick, 6)
       .whileHeld(new HookCommandUp(m_slide));
 

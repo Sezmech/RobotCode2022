@@ -24,7 +24,7 @@ public class LiftSubsystem extends SubsystemBase {
   public void move(double speed) {
     liftMotor1.set(ControlMode.PercentOutput, speed);
     liftMotor2.set(ControlMode.PercentOutput, speed);
-  }
+  }   
 
   @Override
   public void periodic() {
