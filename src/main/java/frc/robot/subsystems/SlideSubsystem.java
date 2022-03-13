@@ -13,19 +13,19 @@ import frc.robot.Constants;
 
 public class SlideSubsystem extends SubsystemBase {
 
-  private static CANSparkMax slideMotor;
+  private static WPI_VictorSPX slideMotor;
   private static WPI_VictorSPX hookMotor;
 
   /** Creates a new SlideSubsystem. */
   public SlideSubsystem() {
 
-    slideMotor = new CANSparkMax(Constants.M_SLIDE, CANSparkMaxLowLevel.MotorType.kBrushless);
+    slideMotor = new WPI_VictorSPX(Constants.M_SLIDE);
     hookMotor = new WPI_VictorSPX(Constants.M_HOOK);
     
   }
 
   public void slideMove(double speed) {
-    slideMotor.set(speed);
+    slideMotor.set(ControlMode.PercentOutput, speed);
   }
 
   public void hookMove(double speed) {

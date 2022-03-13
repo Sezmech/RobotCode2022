@@ -28,8 +28,8 @@ public final class Constants {
         public static final int M_SLIDE = 5;
 
         //Lift Motor IDs
-            public static final int M_LIFT1 = 6;
-            public static final int M_LIFT2 = 8;
+        public static final int M_LIFT1 = 6;
+        public static final int M_LIFT2 = 8;
 
         //Hook Motor ID
         public static final int M_HOOK = 7;
