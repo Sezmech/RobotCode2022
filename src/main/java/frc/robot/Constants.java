@@ -34,6 +34,10 @@ public final class Constants {
         //Hook Motor ID
         public static final int M_HOOK = 7;
 
+        //Catapult Motor IDs
+        public static final int M_CATAPULT1 = 9;
+        public static final int M_CATAPULT2 = 10;
+
         
     ///Sensor Ports
         //Limit Switches

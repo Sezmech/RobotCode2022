@@ -9,12 +9,14 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.FireCommand;
 import frc.robot.commands.HookCommandDown;
 import frc.robot.commands.HookCommandUp;
 import frc.robot.commands.LiftCommandDown;
 import frc.robot.commands.LiftCommandUp;
 import frc.robot.commands.SlideCOmmandBackwards;
 import frc.robot.commands.SlideCommandForward;
+import frc.robot.subsystems.CatapultSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
@@ -41,6 +43,7 @@ public class RobotContainer {
   private final DriveSubsystem m_drive = new DriveSubsystem();
   private final LiftSubsystem m_lift = new LiftSubsystem();
   private final SlideSubsystem m_slide = new SlideSubsystem();
+  private final CatapultSubsystem m_catapult = new CatapultSubsystem();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -59,25 +62,33 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     
+    // Lift Up
     new JoystickButton(joystick, 5)
       .whileHeld(new LiftCommandUp(m_lift));
 
+    // Lift Down
     new JoystickButton(joystick, 7)
       .whileHeld(new LiftCommandDown(m_lift));
     
-  
+    //Slide Forward
     new JoystickButton(joystick, 4)
       .whileHeld(new SlideCommandForward(m_slide));
 
+    //Slide Back
     new JoystickButton(joystick, 2)
       .whileHeld(new SlideCOmmandBackwards(m_slide));
     
+    //Hook Open
     new JoystickButton(joystick, 6)
       .whileHeld(new HookCommandUp(m_slide));
 
+    //Hook Close
     new JoystickButton(joystick, 8)
       .whileHeld(new HookCommandDown(m_slide));
-      
+
+    //Fire Catapult
+    new JoystickButton(joystick, 1)
+      .whileHeld(new FireCommand(m_catapult));
     }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
