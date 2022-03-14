@@ -22,7 +22,7 @@ public class HookCommandUp extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_slide.hookMove(0.7);
+    m_slide.hookMove(1);
   }
 
   // Called once the command ends or is interrupted.
