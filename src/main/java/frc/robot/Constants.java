@@ -14,7 +14,7 @@ package frc.robot;
  */
 public final class Constants {
     ///Motor CAN IDs
-        //Joystick Ports
+        //Joystick Ports (USB)
         public static final int JOYSTICK_D = 0; //Driver Joystick
         public static final int JOYSTICK_C = 1; //Controller Joystick
 
@@ -28,8 +28,8 @@ public final class Constants {
         public static final int M_SLIDE = 5;
 
         //Lift Motor IDs
-        public static final int M_LIFT1 = 6;
-        public static final int M_LIFT2 = 8;
+        public static final int M_RIGHT_LIFT = 8;
+        public static final int M_LEFT_LIFT = 6;
 
         //Hook Motor ID
         public static final int M_HOOK = 7;
@@ -41,13 +41,14 @@ public final class Constants {
 
         
     ///Sensor Ports
-        //Limit Switches
-        public static final int S_UPPER_LIFT = 0;
-        public static final int S_LOWER_LIFT = 2;
+        //Limit Switches (DIO)
+        public static final int S_RIGHTUPPER_LIFT = 0;
+        public static final int S_LEFTUPPER_LIFT = 2;
 
-    ///Sensor Ports
-        //Limit Switches
-        public static final int S_RIGHT_SLIDE = 3;
-        public static final int S_LEFT_SLIDE = 4;
+        public static final int S_RIGHTLOWER_LIFT = 3;
+        public static final int S_LEFTLOWER_LIFT = 4;
+
+        public static final int S_FRONT_SLIDE = 5;
+        public static final int S_BACK_SLIDE = 6;
     
 }

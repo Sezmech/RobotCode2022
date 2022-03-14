@@ -7,17 +7,13 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.ClimbCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.FeedCommand;
-import frc.robot.commands.HookCommandDown;
-import frc.robot.commands.HookCommandUp;
 import frc.robot.commands.IntakeCommand;
-import frc.robot.commands.LiftCommandDown;
 import frc.robot.commands.LiftCommandUp;
 import frc.robot.commands.ShootCommand;
-import frc.robot.commands.SlideCOmmandBackwards;
-import frc.robot.commands.SlideCommandForward;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
@@ -64,25 +60,15 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     
+    //Lift Up Command
     new JoystickButton(joystick, 5)
-      .whileHeld(new LiftCommandUp(m_lift));
+      .whenPressed(new LiftCommandUp(m_lift));
 
+    // Pull Down and climb command, intended to run after lift-up
     new JoystickButton(joystick, 7)
-      .whileHeld(new LiftCommandDown(m_lift));
+      .whenPressed(new ClimbCommand(m_lift, m_slide));
     
-  
-    new JoystickButton(joystick, 4)
-      .whileHeld(new SlideCommandForward(m_slide));
-
-    new JoystickButton(joystick, 2)
-      .whileHeld(new SlideCOmmandBackwards(m_slide));
-    
-    new JoystickButton(joystick, 6)
-      .whileHeld(new HookCommandUp(m_slide));
-
-    new JoystickButton(joystick, 8)
-      .whileHeld(new HookCommandDown(m_slide));
-
+      /*
     new JoystickButton(joystick, 1)
       .whileHeld(new ShootCommand(m_shoot));
 
@@ -91,7 +77,7 @@ public class RobotContainer {
 
       new JoystickButton(joystick, 12)
       .toggleWhenPressed(new IntakeCommand(m_shoot));
-      
+      */
       
     }
   /**
