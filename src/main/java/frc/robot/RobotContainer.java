@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.FeedCommand;
 import frc.robot.commands.FireCommand;
 import frc.robot.commands.HookCommandDown;
 import frc.robot.commands.HookCommandUp;
@@ -37,7 +38,8 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   // Joystick object initialization
-  public static Joystick joystick = new Joystick(Constants.JOYSTICK_D);
+  public static Joystick joystickD = new Joystick(Constants.JOYSTICK_D);
+  public static Joystick joystickC = new Joystick(Constants.JOYSTICK_C);
 
   // Subsystem Definitions
   private final DriveSubsystem m_drive = new DriveSubsystem();
@@ -63,32 +65,36 @@ public class RobotContainer {
   private void configureButtonBindings() {
     
     // Lift Up
-    new JoystickButton(joystick, 5)
+    new JoystickButton(joystickC, 5)
       .whileHeld(new LiftCommandUp(m_lift));
 
     // Lift Down
-    new JoystickButton(joystick, 7)
+    new JoystickButton(joystickC, 3)
       .whileHeld(new LiftCommandDown(m_lift));
     
     //Slide Forward
-    new JoystickButton(joystick, 4)
+    new JoystickButton(joystickC, 6)
       .whileHeld(new SlideCommandForward(m_slide));
 
     //Slide Back
-    new JoystickButton(joystick, 2)
+    new JoystickButton(joystickC, 4)
       .whileHeld(new SlideCOmmandBackwards(m_slide));
     
     //Hook Open
-    new JoystickButton(joystick, 6)
+    new JoystickButton(joystickC, 11)
       .whileHeld(new HookCommandUp(m_slide));
 
     //Hook Close
-    new JoystickButton(joystick, 8)
+    new JoystickButton(joystickC, 12)
       .whileHeld(new HookCommandDown(m_slide));
 
     //Fire Catapult
-    new JoystickButton(joystick, 1)
+    new JoystickButton(joystickC, 1)
       .whileHeld(new FireCommand(m_catapult));
+
+    //Feed
+    new JoystickButton(joystickC, 2)
+      .whileHeld(new FeedCommand(m_catapult));
     }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

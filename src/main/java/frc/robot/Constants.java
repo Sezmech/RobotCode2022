@@ -37,7 +37,7 @@ public final class Constants {
         //Catapult Motor IDs
         public static final int M_CATAPULT1 = 9;
         public static final int M_CATAPULT2 = 10;
-
+        public static final int M_FEED = 11;
         
     ///Sensor Ports
         //Limit Switches

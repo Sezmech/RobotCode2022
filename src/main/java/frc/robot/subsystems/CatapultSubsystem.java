@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 
@@ -13,10 +15,13 @@ import frc.robot.Constants;
 public class CatapultSubsystem extends SubsystemBase {
   private CANSparkMax catapult1;
   private CANSparkMax catapult2;
+
+  private WPI_VictorSPX feedMotor;
   /** Creates a new CatapultSubsystem. */
   public CatapultSubsystem() {
     catapult1 = new CANSparkMax(Constants.M_CATAPULT1, CANSparkMaxLowLevel.MotorType.kBrushless);
     catapult2 = new CANSparkMax(Constants.M_CATAPULT2, CANSparkMaxLowLevel.MotorType.kBrushless);
+    feedMotor = new WPI_VictorSPX(Constants.M_FEED);
   }
 
   public void fire(double speed, boolean both) {
@@ -27,6 +32,10 @@ public class CatapultSubsystem extends SubsystemBase {
     else {
       catapult1.set(speed);
     }
+  }
+
+  public void feed(double speed) {
+    feedMotor.set(ControlMode.PercentOutput, speed);
   }
 
   @Override
