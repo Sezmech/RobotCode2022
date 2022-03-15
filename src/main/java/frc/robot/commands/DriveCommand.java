@@ -26,7 +26,7 @@ public class DriveCommand extends CommandBase {
   @Override
   public void execute() {
     //Default drive command used in driving
-    m_subsystem.drive(RobotContainer.joystickD.getY(), RobotContainer.joystickD.getZ());
+    m_subsystem.drive(RobotContainer.joystickD.getY(), RobotContainer.joystickD.getRawAxis(4));
   }
 
   // Called once the command ends or is interrupted.

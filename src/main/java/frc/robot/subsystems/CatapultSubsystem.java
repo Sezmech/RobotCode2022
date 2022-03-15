@@ -16,12 +16,12 @@ public class CatapultSubsystem extends SubsystemBase {
   private CANSparkMax catapult1;
   private CANSparkMax catapult2;
 
-  private WPI_VictorSPX feedMotor;
+  private WPI_VictorSPX intakeMotor;
   /** Creates a new CatapultSubsystem. */
   public CatapultSubsystem() {
     catapult1 = new CANSparkMax(Constants.M_CATAPULT1, CANSparkMaxLowLevel.MotorType.kBrushless);
     catapult2 = new CANSparkMax(Constants.M_CATAPULT2, CANSparkMaxLowLevel.MotorType.kBrushless);
-    feedMotor = new WPI_VictorSPX(Constants.M_FEED);
+    intakeMotor = new WPI_VictorSPX(Constants.M_INTAKE);
   }
 
   public void fire(double speed, boolean both) {
@@ -34,8 +34,8 @@ public class CatapultSubsystem extends SubsystemBase {
     }
   }
 
-  public void feed(double speed) {
-    feedMotor.set(ControlMode.PercentOutput, speed);
+  public void intake(double speed) {
+    intakeMotor.set(ControlMode.PercentOutput, speed);
   }
 
   @Override

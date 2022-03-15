@@ -7,9 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.AutonomusCommand;
 import frc.robot.commands.DriveCommand;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.FeedCommand;
+import frc.robot.commands.InkateCommand;
 import frc.robot.commands.FireCommand;
 import frc.robot.commands.HookCommandDown;
 import frc.robot.commands.HookCommandUp;
@@ -34,8 +34,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   // Joystick object initialization
   public static Joystick joystickD = new Joystick(Constants.JOYSTICK_D);
@@ -65,27 +63,27 @@ public class RobotContainer {
   private void configureButtonBindings() {
     
     // Lift Up
-    new JoystickButton(joystickC, 5)
+    new JoystickButton(joystickC, 7)
       .whileHeld(new LiftCommandUp(m_lift));
 
     // Lift Down
-    new JoystickButton(joystickC, 3)
+    new JoystickButton(joystickC, 9)
       .whileHeld(new LiftCommandDown(m_lift));
     
     //Slide Forward
-    new JoystickButton(joystickC, 6)
+    new JoystickButton(joystickC, 11)
       .whileHeld(new SlideCommandForward(m_slide));
 
     //Slide Back
-    new JoystickButton(joystickC, 4)
+    new JoystickButton(joystickC, 12)
       .whileHeld(new SlideCOmmandBackwards(m_slide));
     
     //Hook Open
-    new JoystickButton(joystickC, 11)
+    new JoystickButton(joystickC, 5)
       .whileHeld(new HookCommandUp(m_slide));
 
     //Hook Close
-    new JoystickButton(joystickC, 12)
+    new JoystickButton(joystickC, 3)
       .whileHeld(new HookCommandDown(m_slide));
 
     //Fire Catapult
@@ -94,7 +92,7 @@ public class RobotContainer {
 
     //Feed
     new JoystickButton(joystickC, 2)
-      .whileHeld(new FeedCommand(m_catapult));
+      .whileHeld(new InkateCommand(m_catapult));
     }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -103,6 +101,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return new AutonomusCommand(m_drive, m_catapult);
   }
 }
