@@ -7,7 +7,8 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.Constants;
-
+//import frc.robot.RobotContainer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class LiftSubsystem extends SubsystemBase {
@@ -15,6 +16,8 @@ public class LiftSubsystem extends SubsystemBase {
   private static WPI_VictorSPX liftMotor1;
   private static WPI_VictorSPX liftMotor2;
 
+  private static double pullConstant = 1;
+  
   /** Creates a new LiftSubsystem. */
   public LiftSubsystem() {
     liftMotor1 = new WPI_VictorSPX(Constants.M_LIFT1);
@@ -22,12 +25,16 @@ public class LiftSubsystem extends SubsystemBase {
   }
 
   public void move(double speed) {
-    liftMotor1.set(ControlMode.PercentOutput, speed);
-    liftMotor2.set(ControlMode.PercentOutput, speed);
+    liftMotor1.set(ControlMode.PercentOutput, speed * pullConstant);
+    liftMotor2.set(ControlMode.PercentOutput, speed * pullConstant);
   }   
 
   @Override
   public void periodic() {
+    
     // This method will be called once per scheduler run
+    //pullConstant = RobotContainer.joystickC.getRawAxis(3);
+    SmartDashboard.putNumber("Pull Constant", pullConstant);
+    
   }
 }

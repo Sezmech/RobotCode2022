@@ -5,17 +5,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.SlideSubsystem;
+import frc.robot.subsystems.ShootSubsystem;
+import frc.robot.Robot;
+//import frc.robot.subsystems.LimelightSubsystem;
+//import frc.robot.subsystems.LimelightSubsystem;
 
-public class HookCommandDown extends CommandBase {
-  private final SlideSubsystem m_slide;
+public class ShootCommandUp extends CommandBase {
+  private final ShootSubsystem m_shoot;
+  
+
   /** Creates a new HookCommandDown. */
-  public HookCommandDown(SlideSubsystem subsystem) {
-    m_slide = subsystem;
+  public ShootCommandUp(ShootSubsystem subsystem) {
+    m_shoot = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_slide);
+    addRequirements(m_shoot);
   }
-
+  
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
@@ -23,13 +28,27 @@ public class HookCommandDown extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_slide.hookMove(-1);
+    if(Robot.enval >= 0){
+      m_shoot.feedMove(-0.1);
+     }else{
+       m_shoot.feedMove(0);
+     }
+    
+    //m_shoot.changeSpeed(0.7);
+    ///m_shoot.hookMove();
+    /*try {
+      Thread.sleep(2000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    m_shoot.feedMove(0.4);*/
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_slide.hookMove(0);
+    //m_shoot.changeSpeed(0);
+    m_shoot.feedMove(0);
   }
 
   // Returns true when the command should end.

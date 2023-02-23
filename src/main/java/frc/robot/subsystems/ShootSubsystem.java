@@ -9,33 +9,47 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.CANSparkMax;
 //import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import frc.robot.Robot;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
 import frc.robot.Constants;
 
-public class SlideSubsystem extends SubsystemBase {
+public class ShootSubsystem extends SubsystemBase {
 
-  private static WPI_VictorSPX slideMotor;
+
+  private static CANSparkMax feedMotor;
+  private static CANSparkMax hookMotor;
   
-
   /** Creates a new SlideSubsystem. */
-  public SlideSubsystem() {
+  public ShootSubsystem() {
 
-    slideMotor = new WPI_VictorSPX(Constants.M_SLIDE);
-    
+    feedMotor = new CANSparkMax(12, MotorType.kBrushless);
+    hookMotor = new CANSparkMax(6, MotorType.kBrushless);
     
   }
 
-  public void slideMove(double speed) {
-    slideMotor.set(ControlMode.PercentOutput, speed);
+  public void feedMove(double speed) {
+    feedMotor.set(speed);
   }
 
- 
+  public void hookMove(double speed) {
+    hookMotor.set(speed);
+  }
 
+  
+  
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   
   }
 
+  
+
+
 }
+
+

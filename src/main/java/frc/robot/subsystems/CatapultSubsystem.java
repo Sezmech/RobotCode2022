@@ -22,9 +22,10 @@ public class CatapultSubsystem extends SubsystemBase {
     catapult1 = new CANSparkMax(Constants.M_CATAPULT1, CANSparkMaxLowLevel.MotorType.kBrushless);
     catapult2 = new CANSparkMax(Constants.M_CATAPULT2, CANSparkMaxLowLevel.MotorType.kBrushless);
     intakeMotor = new WPI_VictorSPX(Constants.M_INTAKE);
+    
   }
 
-  public void fire(double speed, boolean both) {
+  public void catapultfire(double speed, boolean both) {
     if(both) {
       catapult1.set(speed);
       catapult2.set(speed);

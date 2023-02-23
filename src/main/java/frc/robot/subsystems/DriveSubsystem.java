@@ -36,7 +36,7 @@ public class DriveSubsystem extends SubsystemBase {
      > rotation is assigned to the Z axis
   */
   public void drive(double speed, double rotation) {
-    chassis.arcadeDrive(rotation * 0.8, speed * 0.65);
+    chassis.arcadeDrive(rotation * 0.6, speed);
   }
 
   @Override
@@ -47,5 +47,9 @@ public class DriveSubsystem extends SubsystemBase {
   @Override
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
+  }
+
+  public void stop() {
+    drive(0, 0);
   }
 }

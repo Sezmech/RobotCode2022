@@ -5,25 +5,28 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.CatapultSubsystem;
+import frc.robot.subsystems.LimelightSubsystem;
 
-public class FireCommand extends CommandBase {
-  private final CatapultSubsystem m_catapult;
-  /** Creates a new FireCommand. */
-  public FireCommand(CatapultSubsystem subsystem) {
-    m_catapult = subsystem;
+public class LimelightCommand extends CommandBase {
+  private final LimelightSubsystem m_lime;
+  /** Creates a new LimelightCommand. */
+  public LimelightCommand(LimelightSubsystem subsystem) {
+    m_lime = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_catapult);
+    addRequirements(m_lime);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_catapult.fire(0.7, false);
+    m_lime.periodic();
+    
   }
 
   // Called once the command ends or is interrupted.

@@ -4,32 +4,45 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.LiftSubsystem;
+import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.LimelightSubsystem;
 
-public class LiftCommandDown extends CommandBase {
-  private final LiftSubsystem m_lift;
+public class AutoShoot extends CommandBase {
+  private final DriveSubsystem m_drive;
+  private final LimelightSubsystem m_lime;
+  private PIDController pid;
+   
+  
+  
   /** Creates a new LiftCommandDown. */
-  public LiftCommandDown(LiftSubsystem subsystem) {
-    m_lift = subsystem;
+  public AutoShoot(DriveSubsystem subsystemDrive, LimelightSubsystem subsystemLimelight) {
+    m_drive = subsystemDrive;
+    m_lime = subsystemLimelight;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(m_lift);
-  }
+    addRequirements(m_drive, m_lime);
 
+  }
+  
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    pid = new PIDController(1,0,0);
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_lift.move(0.7);
+   //if(!(|m_lime.tx| <= 0.0087 ))
+   //m_drive.drive(0,pid.calculate(m_lime.tx,0.0));
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_lift.move(0);
+    
   }
 
   // Returns true when the command should end.
@@ -38,3 +51,5 @@ public class LiftCommandDown extends CommandBase {
     return false;
   }
 }
+
+

@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -13,26 +15,30 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    
     ///Motor CAN IDs
         //Joystick Ports
         public static final int JOYSTICK_D = 0; //Driver Joystick
         public static final int JOYSTICK_C = 1; //Controller Joystick
 
         //Drive Motor IDs
-        public static final int M_FRONTRIGHT = 1;
-        public static final int M_FRONTLEFT = 2;
-        public static final int M_BACKRIGHT = 3;
-        public static final int M_BACKLEFT = 4;
+        public static final int M_FRONTRIGHT = 4;
+        public static final int M_FRONTLEFT = 3;
+        public static final int M_BACKRIGHT = 2;
+        public static final int M_BACKLEFT = 1;
 
-        //Lide Motor ID
-        public static final int M_SLIDE = 5;
+        //Slide Motor ID
+        public static final int M_SLIDE = 7;
 
         //Lift Motor IDs
         public static final int M_LIFT1 = 6;
         public static final int M_LIFT2 = 8;
 
         //Hook Motor ID
-        public static final int M_HOOK = 7;
+        public static final int M_SHOOT = 5;
+
+        //Feed Motor ID
+        public static final int M_FEED = 12;
 
         //Catapult Motor IDs
         public static final int M_CATAPULT1 = 9;
@@ -48,5 +54,19 @@ public final class Constants {
         //Limit Switches
         public static final int S_RIGHT_SLIDE = 3;
         public static final int S_LEFT_SLIDE = 4;
+
+    ///Drivetrain constants,
+        public static final double AUTOBALANCESPEED = 0.3;
+        public static final double MINBALANCEPITCH = -3.0;//DEGREES
+        public static final double MAXBALANCEPITCH = 3.0;//degrees
+        
+
+
+    ///Pneumatics     
+    public static final class ClimbConstants {
+        public static final int kClimbDoubleSolenoidPort1 = 2;
+        public static final int kClimbDoubleSolenoidPort2 = 3;
+    } 
+        
     
 }

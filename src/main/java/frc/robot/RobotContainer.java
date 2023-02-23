@@ -7,23 +7,29 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.AutoShoot;
 import frc.robot.commands.AutonomusCommand;
 import frc.robot.commands.DriveCommand;
-import frc.robot.commands.InkateCommand;
-import frc.robot.commands.FireCommand;
-import frc.robot.commands.HookCommandDown;
-import frc.robot.commands.HookCommandUp;
+import frc.robot.commands.ShootCommandDown;
+import frc.robot.commands.ShootCommandUp;
 import frc.robot.commands.LiftCommandDown;
 import frc.robot.commands.LiftCommandUp;
+import frc.robot.commands.LimelightCommand;
 import frc.robot.commands.SlideCOmmandBackwards;
 import frc.robot.commands.SlideCommandForward;
+import frc.robot.commands.Climber.*;
 import frc.robot.subsystems.CatapultSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
+//import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
+import frc.robot.subsystems.LimelightSubsystem;
+import frc.robot.subsystems.ShootSubsystem;
 import frc.robot.subsystems.SlideSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.BalanceNavxcommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -33,7 +39,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+ // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   // Joystick object initialization
   public static Joystick joystickD = new Joystick(Constants.JOYSTICK_D);
@@ -44,6 +50,9 @@ public class RobotContainer {
   private final LiftSubsystem m_lift = new LiftSubsystem();
   private final SlideSubsystem m_slide = new SlideSubsystem();
   private final CatapultSubsystem m_catapult = new CatapultSubsystem();
+  private final LimelightSubsystem m_lime = new LimelightSubsystem();
+  private final ShootSubsystem m_shoot = new ShootSubsystem();
+  private final ClimbSubsystem m_climb = new ClimbSubsystem();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -64,35 +73,57 @@ public class RobotContainer {
     
     // Lift Up
     new JoystickButton(joystickC, 7)
-      .whileHeld(new LiftCommandUp(m_lift));
+      .whileHeld(new LiftCommandUp(m_lift), true);
+
+    new JoystickButton(joystickD, 5)
+      .whileHeld(new LiftCommandUp(m_lift), true);
 
     // Lift Down
     new JoystickButton(joystickC, 9)
-      .whileHeld(new LiftCommandDown(m_lift));
+      .whileHeld(new LiftCommandDown(m_lift), true);
+
+    new JoystickButton(joystickD, 6)
+      .whileHeld(new LiftCommandDown(m_lift), true);
     
     //Slide Forward
     new JoystickButton(joystickC, 11)
-      .whileHeld(new SlideCommandForward(m_slide));
+      .whileHeld(new SlideCommandForward(m_slide), true);
 
+      new JoystickButton(joystickD, 3)
+      .toggleWhenPressed(new SlideCommandForward(m_slide), true);
+      //whileHeld
     //Slide Back
     new JoystickButton(joystickC, 12)
-      .whileHeld(new SlideCOmmandBackwards(m_slide));
+      .whileHeld(new SlideCOmmandBackwards(m_slide), true);
+
+    new JoystickButton(joystickD, 2)
+      .toggleWhenPressed(new SlideCOmmandBackwards(m_slide), true);
     
-    //Hook Open
-    new JoystickButton(joystickC, 5)
-      .whileHeld(new HookCommandUp(m_slide));
-
-    //Hook Close
+    //Hook Open/shoot back
     new JoystickButton(joystickC, 3)
-      .whileHeld(new HookCommandDown(m_slide));
+      .whenPressed(new ShootCommandUp(m_shoot), true);
 
-    //Fire Catapult
-    new JoystickButton(joystickC, 1)
-      .whileHeld(new FireCommand(m_catapult));
+    //Hook Close/shoot forward
+    new JoystickButton(joystickC, 5)
+      .whenPressed(new ShootCommandDown(m_shoot), true);
 
-    //Feed
-    new JoystickButton(joystickC, 2)
-      .whileHeld(new InkateCommand(m_catapult));
+    //new JoystickButton(joystickC, 4)
+      //.whileHeld(new LimelightCommand(m_lime), true);
+
+    new JoystickButton(joystickC, 111111)
+      .whileHeld(new AutoShoot(m_drive, m_lime), true);
+     // triggerbuttona ata
+
+    new JoystickButton(joystickC, 6)
+     .whileHeld(new OpenClimb(m_climb), true);
+
+    new JoystickButton(joystickC, 4)
+     .whileHeld(new CloseClimb(m_climb), true);
+
+    new JoystickButton(joystickD, 1)
+     
+      .whileHeld(new BalanceNavxcommand(m_drive), true);
+
     }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -101,6 +132,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new AutonomusCommand(m_drive, m_catapult);
+    return new AutonomusCommand(m_drive, m_shoot);
   }
 }
